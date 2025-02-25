@@ -1,0 +1,59 @@
+# How does React work?
+
+-> React is a JavaScript library that follows a component-based architecture and optimizes UI updates using the Virtual DOM.
+Instead of directly updating the Real DOM (which is slow), React creates a lightweight Virtual DOM (a JavaScript object).
+When a component's state or props change:
+1️⃣ React creates a new Virtual DOM and compares it with the previous one using the Diffing Algorithm.
+2️⃣ It finds the differences (minimal updates required) and efficiently updates only the necessary parts of the Real DOM—this process is called Reconciliation.
+This makes React fast, efficient, and optimized for performance.
+
+# What is JSX?
+JSX is a syntax extension for JavaScript that allows writing HTML-like code inside JS.
+It makes React components more readable and easier to write.
+
+ Why JSX?
+Makes UI structure declarative and easier to visualize.
+Babel transpiles it into React.createElement(), which creates the Virtual DOM representation.
+Helps in writing cleaner, more maintainable React code.
+
+✅ JSX Rules & Best Practices
+1️⃣ JSX must have a single parent element (wrap multiple elements in <>...</> or <div>...</div>).
+2️⃣ Use {} to embed JavaScript expressions inside JSX (<h1>{2 + 2}</h1>).
+3️⃣ Use className instead of class, since class is a reserved JS keyword.
+4️⃣ All tags must be properly closed (<br />, <img src="" />).
+5️⃣ Event handlers use camelCase (onClick instead of onclick).
+
+JSX makes React more intuitive and developer-friendly, but ultimately, it's just JavaScript! 🚀
+
+
+# What is a Functional Component?
+A functional component is a JavaScript function that returns JSX. It is the simplest way to create a component in React.
+
+Key Characteristics
+1️⃣ Must start with a capital letter (React treats lowercase as HTML tags).
+2️⃣ Returns JSX (or null).
+3️⃣ Reusable & composable (can be used inside other components).
+4️⃣ No this keyword, unlike class components.
+5️⃣ Pure functions – They take props as input and return JSX without side effects.
+
+ Component Composition (Using Components Inside Components)
+
+# Props in React:
+
+1️⃣ Props are properties that are passed to a component.
+2️⃣ They are passed from parent to child (one-way data flow).
+3️⃣ Parent = The component that contains another component.
+4️⃣ Child = The component that receives the props.
+5️⃣ Props are passed as attributes inside JSX.
+6️⃣ Props are immutable → The child component cannot modify the props it receives.
+7️⃣ We can destructure props to make the code cleaner.
+
+
+
+
+
+
+
+
+
+
