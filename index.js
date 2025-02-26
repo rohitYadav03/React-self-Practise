@@ -180,7 +180,7 @@ const ProfileCard2 = ({name,age,bio}) => {
 // root.render(<ProfileCard name= "Rohit" age={22} bio="CS student" />)
 
 
-// -----------------useState Hook ---------------------------------------------------------------------------------
+// ----------------- useState Hook ---------------------------------------------------------------------------------
 
 function Counter() {
     const [count, setCount] = useState(); // Step 1: Create a state variable
@@ -216,4 +216,169 @@ const ToggleButton  = () => {
 )
 }
 
-root.render(<ToggleButton />)  
+// ------------------------------------- Event in React ---------------------------------------------
+
+// What is an event?
+// An event is any user interaction with a webpage, like:
+// ✔ Clicking a button (onClick)
+// ✔ Typing in an input field (onChange)
+// ✔ Submitting a form (onSubmit)
+// ✔ Hovering over an element (onMouseEnter)
+
+// React provides a way to handle these events using event handlers (functions that run when an event occurs).
+
+// 1. onClick  Event =>
+
+const SimpleButton = () => {
+
+  let [btn,setBtn] = useState("Click Me")
+  function buttonClick (){
+    console.log("Button was clicked!");
+    
+  }
+  return <button onClick={() => setBtn(prev => prev === "Click Me" ? "Clicked" : "Click Me")}>{btn}</button>
+
+}
+
+// root.render(<SimpleButton />)  
+
+// 2. onChange
+const InputField = () => {
+  const [text, setText] = useState("");
+
+  function handleChange(event) {
+    setText(event.target.value);
+  }
+
+  return (
+    <div>
+      <input type="text" value={text} onChange={handleChange} />
+      <p>Typed: {text}</p>
+    </div>
+  );
+};
+
+// root.render(<InputField />);
+
+//3. onMouseEnter&onMouseLeave =>
+const HoverBox = () => {
+  const [color, setColor] = useState("blue");
+
+  return (
+    <div
+      style={{ width: 100, height: 100, backgroundColor: color }}
+      onMouseEnter={() => setColor("red")}
+      onMouseLeave={() => setColor("blue")}
+    >
+      Hover me
+    </div>
+  );
+};
+
+// root.render(<HoverBox />);
+
+// onSubmit =>
+  const FormExample = () => {
+    const [name, setName] = useState("");
+  
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert(`Submitted Name: ${name}`);
+    }
+  
+    return (
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <button type="submit">Submit</button>
+      </form>
+    );
+  };
+  
+  // root.render(<FormExample />);
+  
+// 1️⃣ Build a text input field where the user types, and 
+// when they press "Enter," it logs the entered text in the console.
+
+function InputComponent (){
+
+  let [text, setText] = useState("");
+
+  function change (e){
+    setText(e.target.value)
+  }
+
+  function done (event){
+   if(event.key === "Enter"){
+    console.log(text);
+    
+   }
+  }
+
+  return (
+    <>
+    <input type="text" value={text} onChange={change} onKeyDown={done}></input>
+    </>
+  )
+
+}
+
+// 2️⃣ Create a "hover effect" where an image changes when the user hovers over it and returns to the original image when they move away.
+
+function HoverEffect() {
+  const [imageSrc, setImageSrc] = useState(
+    "https://imgs.search.brave.com/9_ffpQpbN7MywrC5um2SJxdmIlYYgaq8Aws5P0GO4yI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzE3LzM2Lzkx/LzM2MF9GXzgxNzM2/OTEwMV9VNU5rQVlR/MGNsUWM3cEpsVWFZ/SGh4Y1dyZ1lTSk9u/US5qcGc"
+  );
+
+  function changeImg() {
+    setImageSrc(
+      "https://imgs.search.brave.com/qXWKeVxghyyNRWi3tqFAebH2-Fewbo2X5HRv5jV5jZ4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzE3LzM2Lzkx/LzM2MF9GXzgxNzM2/OTEwMV9VNU5rQVlR/MGNsUWM3cEpsVWFZ/SGh4Y1dyZ1lTSk9u/US5qcGc"
+    );
+  }
+
+  function resetImg() {
+    setImageSrc(
+      "https://imgs.search.brave.com/9_ffpQpbN7MywrC5um2SJxdmIlYYgaq8Aws5P0GO4yI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzE3LzM2Lzkx/LzM2MF9GXzgxNzM2/OTEwMV9VNU5rQVlR/MGNsUWM3cEpsVWFZ/SGh4Y1dyZ1lTSk9u/US5qcGc"
+    );
+  }
+
+  return (
+    <>
+      <img
+        src={imageSrc}
+        alt="Hover to change"
+        onMouseEnter={changeImg}
+        onMouseLeave={resetImg}
+        width="300"
+        height="300"
+      />
+    </>
+  );
+}
+
+// root.render(<HoverEffect />);
+
+
+// 3. Create a password input field with a "Show Password" checkbox:
+
+function PasswordComp (){
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false)
+
+  function updateInput(event){
+     setPassword(event.target.value)
+  }
+
+  function show (event){
+   setShowPassword(event.target.checked)
+  }
+
+  return(
+      <>
+      <input type={showPassword ? "text" : "password"}  value={password} onChange={updateInput}></input>
+      <input type="checkbox" onChange={show} ></input>
+      </>
+  )
+
+
+}
+root.render(<PasswordComp />)
