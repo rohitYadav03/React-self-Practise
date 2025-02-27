@@ -48,9 +48,42 @@ Key Characteristics
 6️⃣ Props are immutable → The child component cannot modify the props it receives.
 7️⃣ We can destructure props to make the code cleaner.
 
+📌 useState Hook :
 
+useState() => is a React Hook used to create and manage state in functional components.
 
+Syntax:
+const [state, setState] = useState(initialValue)
 
+How It Works:
+state → Holds the value.
+setState() → Function to update the state.
+initialValue → Starting value of the state.
+
+✅ Key Points of useState
+It re-renders the component whenever state changes.
+Never update state directly like count++.
+Use setState() to update the value.
+
+📌 Handling Events in React
+React uses camelCase for event names (not lowercase like HTML).
+
+Event	        Description
+onClick	        Click event
+onChange	    Input field changes
+onSubmit	    Form submission
+onMouseEnter	Hover effect
+onMouseLeave	Mouse leaves element
+
+📌 Rendering Lists & Keys
+Used to display dynamic lists like arrays.
+Use .map() method to loop through the list.
+✅ Why Keys?
+Keys help React identify which items changed or deleted.
+
+Important Points 🔥
+Always use keys inside .map().
+Keys must be unique.
 
 
 

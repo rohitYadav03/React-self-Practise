@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import ReactDOM from "react-dom/client";
 import { useState } from "react";
 
@@ -378,7 +378,45 @@ function PasswordComp (){
       <input type="checkbox" onChange={show} ></input>
       </>
   )
+}
+// 
 
+function Login (){
+ const [isLoggenIn, setIsLoggedIn] = useState("Logout");
+ const [user, setUser] = useState("Guest")
+
+ function checkLogin () {
+  if (isLoggenIn === "Logout") {
+     setIsLoggedIn("Login");
+     setUser(""); 
+  } else {
+     setIsLoggedIn("Logout");
+     setUser("Guest");  
+  }
+}
+
+
+ return (
+ <>
+  <p>Hello {user}</p>
+  <button onClick={checkLogin}>{isLoggenIn}</button>
+  </>
+)
 
 }
-root.render(<PasswordComp />)
+// root.render(<Login />)
+
+// ------------------  Rendering Lists & Keys --------------------------------------------------------------------
+
+const fruits = ["Apple", "Banana", "Cherry"];
+
+function FruitList() {
+  return (
+    <ul>
+      {fruits.map((curFruit, index) => {
+        return <li key={index}>{curFruit}</li>
+      })}
+    </ul>
+  );
+}
+root.render(<FruitList />)
