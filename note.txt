@@ -25,7 +25,6 @@ Helps in writing cleaner, more maintainable React code.
 
 JSX makes React more intuitive and developer-friendly, but ultimately, it's just JavaScript! 🚀
 
-
 # What is a Functional Component?
 A functional component is a JavaScript function that returns JSX. It is the simplest way to create a component in React.
 
@@ -85,8 +84,74 @@ Important Points 🔥
 Always use keys inside .map().
 Keys must be unique.
 
+✅ Conditional Rendering allows showing different content based on conditions.
+
+1️⃣ if Statements (Outside JSX)
+Used outside JSX to return different components.
+
+2️⃣ Ternary Operator ( ? : )
+Inline conditional rendering inside JSX.
+
+condition ? <Component1 /> : <Component2 />
+👉 Best for rendering two options.
+
+3️⃣ && Short-Circuit Evaluation
+Renders content only if the condition is true.
+
+condition && <Component />
+👉 Best for showing content based on one condition.
+
+⚡ Key Points:
+Use if outside JSX.
+Use ? : inside JSX for two options.
+Use && for single condition rendering.
+Return null if nothing needs to be shown.
+
+# What is useEffect() Hook?
+The useEffect hook is used to perform side effects in React components.
+Side Effects mean:
+
+API calls
+DOM Manipulation
+Event Listeners
+Timers (setInterval, setTimeout)
+Subscriptions
+
+🔑 Syntax
+
+useEffect(() => {
+  // Your Side Effect Code
+  return () => {
+    // Cleanup Code (Optional)
+  };
+}, [dependencies]);
 
 
+🎯 How useEffect() Works
+Case	                       When will it run?	               Cleanup Run
+No Dependency Array	           On every render + re-render 🔄	   ✅ Yes (Every re-render)
+Empty Dependency []	           Only on page load 🔥	               ✅ Only on Unmount
+With Dependencies [count]	   Runs only when dependencies change   ✅ Before running the effect again
+
+🧠 Why Do We Need return() inside useEffect()?
+The return inside useEffect() is used to clean up side effects like:
+
+Clearing Timers
+Removing Event Listeners
+Cancelling API Requests
+Unsubscribing from Streams
 
 
+🎯 Rule of Thumb 🧠
+Task	                Cleanup Needed?
+API Call	            ❌ No
+Timers	                ✅ Yes
+Event Listeners	        ✅ Yes
+DOM Manipulation	    ✅ Yes
+State Changes	       ❌ No
+Local Storage	       ❌ No
+Subscriptions(WebSocket, Audio Streams)	✅ Yes
+
+Why Cleanup Is Needed?
+If we don't use the return(), the old effect will still run in memory even if the component is removed or re-rendered — This will create Memory Leaks.
 
