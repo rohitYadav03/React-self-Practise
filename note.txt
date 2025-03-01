@@ -41,7 +41,7 @@ Key Characteristics
 
 1️⃣ Props are properties that are passed to a component.
 2️⃣ They are passed from parent to child (one-way data flow).
-3️⃣ Parent = The component that contains another component.
+3️⃣ Parent = The component that passes prop.
 4️⃣ Child = The component that receives the props.
 5️⃣ Props are passed as attributes inside JSX.
 6️⃣ Props are immutable → The child component cannot modify the props it receives.
@@ -128,10 +128,10 @@ useEffect(() => {
 
 
 🎯 How useEffect() Works
-Case	                       When will it run?	               Cleanup Run
-No Dependency Array	           On every render + re-render 🔄	   ✅ Yes (Every re-render)
+Case	                       When will it run?	                  Cleanup Run
+No Dependency Array	           On every render + re-render 🔄	    ✅ Yes (Every re-render)
 Empty Dependency []	           Only on page load 🔥	               ✅ Only on Unmount
-With Dependencies [count]	   Runs only when dependencies change   ✅ Before running the effect again
+With Dependencies [count]	   Runs only when dependencies change    ✅ Before running the effect again
 
 🧠 Why Do We Need return() inside useEffect()?
 The return inside useEffect() is used to clean up side effects like:
